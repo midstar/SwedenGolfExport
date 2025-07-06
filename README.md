@@ -66,9 +66,11 @@ for (let row of rows) {
     text(row,'[class="new-hcp"]'),
     text(row,'div.marker span:nth-of-type(2)')];
   // Uncomment below if . should be used instead of , for numbers
-  //cols = cols.map(function(item,index){
-  //  return item.replaceAll(',','.')
-  //});
+  if (CSV_SEPARATOR == ",") {
+    cols = cols.map(function(item,index){
+        return item.replaceAll(',','.')
+    });
+  }
   csv.push(cols.join(CSV_SEPARATOR));
 }
 const downloadLink = document.createElement('a');
